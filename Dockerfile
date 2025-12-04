@@ -4,6 +4,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 ENV USER=render
 ENV HOME=/home/render
 
+# Added 'gnupg', 'dirmngr', and 'ca-certificates' to fix the PPA GPG error
 RUN apt update -y && apt install --no-install-recommends -y \
     xfce4 \
     xfce4-goodies \
@@ -26,6 +27,9 @@ RUN apt update -y && apt install --no-install-recommends -y \
     software-properties-common \
     python3 \
     python3-numpy \
+    gnupg \
+    dirmngr \
+    ca-certificates \
     && apt clean && rm -rf /var/lib/apt/lists/*
 
 RUN add-apt-repository ppa:mozillateam/ppa -y && \
